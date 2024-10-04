@@ -15,29 +15,28 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   void initState() {
-    FirebaseMessaging.onMessage.listen(
-      (event) {
-        AwesomeNotifications().createNotification(
-          content: NotificationContent(
-            id: 1,
-            channelKey: 'basic',
-            title: event.notification!.title,
-            body: event.notification!.body,
-            duration: const Duration(seconds: 2),
-            actionType: ActionType.Default,
-            roundedBigPicture: true,
-            displayOnBackground: true,
-            fullScreenIntent: true,
-            notificationLayout: NotificationLayout.BigPicture,
-            wakeUpScreen: true,
-          ),
-        );
-      },
-    );
     AwesomeNotifications().isNotificationAllowed().then(
       (value) {
         if (value) {
-          log('Allowed');
+          FirebaseMessaging.onMessage.listen(
+            (event) {
+              AwesomeNotifications().createNotification(
+                content: NotificationContent(
+                  id: 1,
+                  channelKey: 'basic',
+                  title: event.notification!.title,
+                  body: event.notification!.body,
+                  duration: const Duration(seconds: 2),
+                  actionType: ActionType.Default,
+                  roundedBigPicture: true,
+                  displayOnBackground: true,
+                  fullScreenIntent: true,
+                  notificationLayout: NotificationLayout.BigPicture,
+                  wakeUpScreen: true,
+                ),
+              );
+            },
+          );
         } else {
           log('Not Allowed');
           AwesomeNotifications()
