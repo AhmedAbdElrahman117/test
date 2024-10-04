@@ -20,20 +20,8 @@ class _HomeState extends State<Home> {
           log('Allowed');
         } else {
           log('Not Allowed');
-          AwesomeNotifications().requestPermissionToSendNotifications(
-            channelKey: 'basic',
-            permissions: [
-              NotificationPermission.Alert,
-              NotificationPermission.Sound,
-              NotificationPermission.Badge,
-              NotificationPermission.Vibration,
-              NotificationPermission.Light,
-              NotificationPermission.OverrideDnD,
-              NotificationPermission.Provisional,
-              NotificationPermission.Car,
-              NotificationPermission.FullScreenIntent,
-            ],
-          );
+          AwesomeNotifications()
+              .requestPermissionToSendNotifications(channelKey: 'basic');
         }
       },
     );
