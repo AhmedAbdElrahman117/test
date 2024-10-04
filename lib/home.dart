@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 
+@pragma("vm:entry-point")
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -19,8 +20,30 @@ class _HomeState extends State<Home> {
           log('Allowed');
         } else {
           log('Not Allowed');
-          AwesomeNotifications().requestPermissionToSendNotifications();
+          AwesomeNotifications().requestPermissionToSendNotifications(
+            channelKey: 'basic',
+            permissions: [
+              NotificationPermission.Alert,
+              NotificationPermission.Sound,
+              NotificationPermission.Badge,
+              NotificationPermission.Vibration,
+              NotificationPermission.Light,
+              NotificationPermission.OverrideDnD,
+              NotificationPermission.Provisional,
+              NotificationPermission.Car,
+              NotificationPermission.FullScreenIntent,
+            ],
+          );
         }
+      },
+    );
+
+    AwesomeNotifications().setListeners(
+      onActionReceivedMethod: (receivedAction) async {
+        log(receivedAction.body!);
+      },
+      onNotificationDisplayedMethod: (receivedNotification) async {
+        log(receivedNotification.body!);
       },
     );
     super.initState();
@@ -40,10 +63,12 @@ class _HomeState extends State<Home> {
                   channelKey: 'basic',
                   title: 'Hi',
                   body: 'I Sent A Notification',
-                  actionType: ActionType.KeepOnTop,
+                  duration: const Duration(seconds: 2),
+                  actionType: ActionType.Default,
+                  roundedBigPicture: true,
                   displayOnBackground: true,
                   fullScreenIntent: true,
-                  notificationLayout: NotificationLayout.Messaging,
+                  notificationLayout: NotificationLayout.BigPicture,
                   wakeUpScreen: true,
                 ),
               )
@@ -57,7 +82,7 @@ class _HomeState extends State<Home> {
                 },
               );
             },
-            child: Text('Send'),
+            child: const Text('Send'),
           ),
         ),
       ),
