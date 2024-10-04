@@ -4,7 +4,7 @@ import 'package:test/home.dart';
 
 void main() {
   AwesomeNotifications().initialize(
-    'resource://drawable/res_app_icon',
+    null,
     [
       NotificationChannel(
         channelKey: 'basic',
