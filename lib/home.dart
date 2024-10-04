@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 @pragma("vm:entry-point")
@@ -14,6 +15,12 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   void initState() {
+    FirebaseMessaging.onMessage.listen(
+      (event) {
+        log(event.notification!.title.toString());
+        log(event.notification!.body.toString());
+      },
+    );
     AwesomeNotifications().isNotificationAllowed().then(
       (value) {
         if (value) {
@@ -44,6 +51,8 @@ class _HomeState extends State<Home> {
         child: Center(
           child: ElevatedButton(
             onPressed: () async {
+              final fcmToken = await FirebaseMessaging.instance.getToken();
+              log(fcmToken.toString());
               await AwesomeNotifications()
                   .createNotification(
                 content: NotificationContent(
