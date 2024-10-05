@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:test/home.dart';
@@ -14,6 +17,7 @@ class Test extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      locale: PlatformDispatcher.instance.locale,
       localizationsDelegates: const [
         GlobalCupertinoLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
