@@ -17,6 +17,7 @@ class Test extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       locale: PlatformDispatcher.instance.locale,
       localizationsDelegates: const [
+        S.delegate,
         GlobalCupertinoLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
