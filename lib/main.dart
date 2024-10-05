@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:test/constants.dart';
 import 'package:test/home.dart';
 import 'generated/l10n.dart';
 
@@ -14,7 +15,7 @@ class Test extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      locale: const Locale('en'),
+      locale: Locale(local),
       localizationsDelegates: const [
         S.delegate,
         GlobalCupertinoLocalizations.delegate,
