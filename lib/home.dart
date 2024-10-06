@@ -5,6 +5,25 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return SafeArea(
+      child: Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Choose Payment Method'),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('Card'),
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text('Wallet'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
