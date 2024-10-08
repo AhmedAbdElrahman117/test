@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test/generated/l10n.dart';
+import 'package:test/locale_cubit.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -22,7 +24,11 @@ class _HomeState extends State<Home> {
             child: RadioListTile(
               value: 'en',
               groupValue: current,
-              onChanged: (value) {},
+              onChanged: (value) {
+                current = value!;
+                BlocProvider.of<LocaleCubit>(context).changeLocale(value);
+                setState(() {});
+              },
               title: Text('English'),
             ),
           ),
@@ -30,7 +36,11 @@ class _HomeState extends State<Home> {
             child: RadioListTile(
               value: 'ar',
               groupValue: current,
-              onChanged: (value) {},
+              onChanged: (value) {
+                current = value!;
+                BlocProvider.of<LocaleCubit>(context).changeLocale(value);
+                setState(() {});
+              },
               title: Text('Arabic'),
             ),
           ),
