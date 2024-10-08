@@ -6,4 +6,9 @@ class LocaleCubit extends Cubit<LocaleStates> {
   LocaleCubit() : super(LocaleInitial());
 
   Locale currentLocale = Locale('en');
+
+  void changeLocale(String value) {
+    currentLocale = Locale(value);
+    emit(LocaleChanged());
+  }
 }
