@@ -23,12 +23,7 @@ class _HomeState extends State<Home> {
             child: RadioListTile(
               value: 'en',
               groupValue: current,
-              onChanged: (value) {
-                current = value!;
-                currentLocale = Locale(value);
-                S.load(currentLocale);
-                setState(() {});
-              },
+              onChanged: (value) {},
               title: Text('English'),
             ),
           ),
@@ -36,12 +31,7 @@ class _HomeState extends State<Home> {
             child: RadioListTile(
               value: 'ar',
               groupValue: current,
-              onChanged: (value) {
-                current = value!;
-                currentLocale = Locale(value);
-                S.load(currentLocale);
-                setState(() {});
-              },
+              onChanged: (value) {},
               title: Text('Arabic'),
             ),
           ),
