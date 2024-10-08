@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:test/constants.dart';
 import 'package:test/generated/l10n.dart';
