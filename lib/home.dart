@@ -5,6 +5,20 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          SliverList.builder(
+            itemCount: 50,
+            itemBuilder: (context, index) {
+              return Text(
+                'data$index',
+                style: const TextStyle(fontSize: 24),
+              );
+            },
+          ),
+        ],
+      ),
+    );
   }
 }
