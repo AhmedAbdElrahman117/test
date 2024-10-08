@@ -22,13 +22,15 @@ class _HomeState extends State<Home> {
         children: [
           DropdownMenu(
             onSelected: (value) {
-              local = value ?? 'ar';
+              current = Locale(value ?? 'en');
+              S.load(current);
               setState(() {});
             },
-            dropdownMenuEntries: const [
+            dropdownMenuEntries: [
               DropdownMenuEntry(
                 value: 'en',
                 label: 'English',
+                enabled: true,
               ),
               DropdownMenuEntry(
                 value: 'ar',

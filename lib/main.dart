@@ -15,7 +15,7 @@ class Test extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      locale: Locale(local),
+      locale: current,
       localizationsDelegates: const [
         S.delegate,
         GlobalCupertinoLocalizations.delegate,
