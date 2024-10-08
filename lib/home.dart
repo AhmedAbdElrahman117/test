@@ -19,9 +19,9 @@ class _HomeState extends State<Home> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              AnimatedAlign(
-                alignment:
-                    animate ? Alignment.centerRight : Alignment.centerLeft,
+              AnimatedDefaultTextStyle(
+                style:
+                    TextStyle(fontSize: animate ? 50 : 20, color: Colors.black),
                 duration: Duration(milliseconds: 500),
                 child: Text('data'),
               ),
