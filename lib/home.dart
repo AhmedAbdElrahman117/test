@@ -16,33 +16,32 @@ class _HomeState extends State<Home> {
     return SafeArea(
       child: Scaffold(
         body: Center(
-          child: Stack(
-            alignment: Alignment.center,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              AnimatedPositioned(
+              AnimatedScale(
+                scale: animate ? 0 : 1,
                 duration: Duration(milliseconds: 500),
-                right: animate ? 200 : 0,
-                child: Text('data'),
+                child: Container(
+                  width: 500,
+                  height: 500,
+                  color: Colors.amber,
+                ),
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(height: 60),
-                  ElevatedButton(
-                    onPressed: () {
+              SizedBox(height: 60),
+              ElevatedButton(
+                onPressed: () {
+                  animate = !animate;
+                  setState(() {});
+                  Timer(
+                    Duration(milliseconds: 600),
+                    () {
                       animate = !animate;
                       setState(() {});
-                      Timer(
-                        Duration(milliseconds: 600),
-                        () {
-                          animate = !animate;
-                          setState(() {});
-                        },
-                      );
                     },
-                    child: Text('Animate'),
-                  ),
-                ],
+                  );
+                },
+                child: Text('Animate'),
               ),
             ],
           ),
