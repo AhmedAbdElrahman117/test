@@ -1,3 +1,3 @@
 import 'package:flutter/material.dart';
 
-Locale current = Locale('en');
+Locale currentLocale = Locale('en');

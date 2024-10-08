@@ -12,31 +12,40 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  String current = 'en';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(S.of(context).title),
       ),
-      body: Column(
+      body: Row(
         children: [
-          DropdownMenu(
-            onSelected: (value) {
-              current = Locale(value ?? 'en');
-              S.load(current);
-              setState(() {});
-            },
-            dropdownMenuEntries: [
-              DropdownMenuEntry(
-                value: 'en',
-                label: 'English',
-                enabled: true,
-              ),
-              DropdownMenuEntry(
-                value: 'ar',
-                label: 'Arabic',
-              ),
-            ],
+          Flexible(
+            child: RadioListTile(
+              value: 'en',
+              groupValue: current,
+              onChanged: (value) {
+                current = value!;
+                currentLocale = Locale(value);
+                S.load(currentLocale);
+                setState(() {});
+              },
+              title: Text('English'),
+            ),
+          ),
+          Flexible(
+            child: RadioListTile(
+              value: 'ar',
+              groupValue: current,
+              onChanged: (value) {
+                current = value!;
+                currentLocale = Locale(value);
+                S.load(currentLocale);
+                setState(() {});
+              },
+              title: Text('Arabic'),
+            ),
           ),
         ],
       ),
