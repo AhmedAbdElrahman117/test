@@ -5,10 +5,18 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverList.builder(
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        body: NestedScrollView(
+          headerSliverBuilder: (context, innerBoxIsScrolled) {
+            return [
+              SliverAppBar.medium(
+                backgroundColor: Colors.amber,
+              ),
+            ];
+          },
+          body: ListView.builder(
             itemCount: 50,
             itemBuilder: (context, index) {
               return Text(
@@ -17,7 +25,7 @@ class Home extends StatelessWidget {
               );
             },
           ),
-        ],
+        ),
       ),
     );
   }
