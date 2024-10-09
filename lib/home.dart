@@ -13,7 +13,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   ItemScrollController scrollController = ItemScrollController();
   ItemPositionsListener? positionsListener;
-  int current = 12;
+  int current = 0;
   bool isCurrent = false;
 
   @override
@@ -30,6 +30,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          current = 17;
           scrollController.scrollTo(
             index: current,
             duration: const Duration(milliseconds: 200),
