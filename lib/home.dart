@@ -9,38 +9,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Column(
-          children: [
-            Slidable(
-              endActionPane: ActionPane(
-                motion: const ScrollMotion(),
-                children: [
-                  const SizedBox(width: 10),
-                  SlidableAction(
-                    onPressed: (context) {},
-                    label: 'Share',
-                    borderRadius: BorderRadius.circular(20),
-                    backgroundColor: Colors.blue,
-                    autoClose: false,
-                    icon: Icons.share,
-                  ),
-                  const SizedBox(width: 10),
-                  SlidableAction(
-                    onPressed: (context) {},
-                    label: 'Share',
-                    borderRadius: BorderRadius.circular(20),
-                    backgroundColor: Colors.blue,
-                    autoClose: false,
-                    icon: Icons.share,
-                  ),
-                  const SizedBox(width: 10),
-                ],
-              ),
-              child: const ListTile(
-                title: Text('data'),
-                tileColor: Colors.amber,
-              ),
-            ),
-          ],
+          children: [],
         ),
       ),
     );
