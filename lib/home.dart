@@ -7,54 +7,31 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CarouselController controller = CarouselController(initialItem: 3);
     return Scaffold(
       body: SafeArea(
-        child: Center(
-          child: ElevatedButton(
-            onPressed: () {
-              showOverlay(context);
-            },
-            child: Text('Show Overlay'),
-          ),
-        ),
-      ),
-    );
-  }
-
-  void showOverlay(BuildContext context) {
-    OverlayEntry overlay = OverlayEntry(
-      builder: (context) {
-        return Stack(
-          alignment: Alignment.center,
+        child: Column(
           children: [
-            Material(
-              child: Container(
-                width: MediaQuery.sizeOf(context).width,
-                height: MediaQuery.sizeOf(context).height,
-                decoration: BoxDecoration(color: Colors.transparent),
-                child: Container(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TextField(),
-                    ],
-                  ),
-                ),
+            SizedBox(
+              height: 200,
+              child: CarouselView(
+                controller: controller,
+                itemExtent: 200,
+                children: [
+                  Container(color: Colors.amber),
+                  Container(color: Colors.black),
+                  Container(color: Colors.yellow),
+                ],
               ),
             ),
+            SizedBox(height: 50),
+            ElevatedButton(
+              onPressed: () {},
+              child: Text('data'),
+            ),
           ],
-        );
-      },
-    );
-
-    Overlay.of(context).insert(overlay);
-
-    Timer(
-      Duration(seconds: 2),
-      () {
-        overlay.remove();
-      },
+        ),
+      ),
     );
   }
 }
