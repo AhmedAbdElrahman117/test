@@ -10,8 +10,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   List<String> list = List.generate(10, (index) => 'H$index');
 
-  bool isAccepted = false;
-  String val = '';
+  String val = 'Drop Here';
   @override
   Widget build(BuildContext context) {
     double top = 0;
@@ -58,27 +57,19 @@ class _HomeState extends State<Home> {
             ),
             DragTarget<String>(
               onAcceptWithDetails: (details) {
-                isAccepted = true;
-                list.remove(details.data);
+                val = details.data;
                 setState(() {});
               },
               onWillAcceptWithDetails: (details) => true,
               builder: (context, candidateData, rejectedData) {
-                return isAccepted
-                    ? Container(
-                        width: 200,
-                        height: 200,
-                        color: Colors.green,
-                        child: Center(
-                          child: Text(val),
-                        ),
-                      )
-                    : Container(
-                        width: 200,
-                        height: 200,
-                        color: Colors.green,
-                        child: const Center(child: Text('Drop Here')),
-                      );
+                return Container(
+                  width: 200,
+                  height: 200,
+                  color: Colors.green,
+                  child: Center(
+                    child: Text(val),
+                  ),
+                );
               },
             ),
           ],
