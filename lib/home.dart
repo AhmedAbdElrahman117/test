@@ -7,9 +7,11 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: ElevatedButton(
-          onPressed: () {},
-          child: Text('data'),
+        child: Center(
+          child: ElevatedButton(
+            onPressed: () {},
+            child: Text('data'),
+          ),
         ),
       ),
     );
