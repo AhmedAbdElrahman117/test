@@ -27,6 +27,10 @@ class _HomeState extends State<Home> {
                       top: top += 30,
                       child: Draggable<String>(
                         data: e.value,
+                        axis: Axis.horizontal,
+                        onDragCompleted: () {
+                          print('object');
+                        },
                         feedback: Material(
                           child: Container(
                             width: 200,
