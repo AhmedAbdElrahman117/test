@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:test/Fade%20Animation.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
 
   @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  OverlayPortalController controller = OverlayPortalController();
+  bool animate = false;
+  @override
   Widget build(BuildContext context) {
-    OverlayPortalController controller = OverlayPortalController();
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -13,27 +20,38 @@ class Home extends StatelessWidget {
           children: [
             Center(
               child: TextButton(
-                onPressed: () => controller.toggle(),
+                onPressed: () {
+                  controller.toggle();
+                  animate = !animate;
+                  setState(() {});
+                },
                 child: OverlayPortal(
                   controller: controller,
                   overlayChildBuilder: (context) {
-                    return Stack(
-                      alignment: Alignment.lerp(
-                          Alignment.center, Alignment.bottomCenter, 0.2)!,
-                      children: [
-                        Container(
-                          width: 200,
-                          height: 40,
-                          color: Colors.grey,
-                          child: const Text(
-                            'This is Overlay Portal',
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.black,
+                    return FadeAnimation(
+                      animationDuration: Duration(milliseconds: 500),
+                      begin: 0,
+                      end: 1,
+                      child: Stack(
+                        alignment: Alignment.lerp(
+                            Alignment.center, Alignment.bottomCenter, 0.2)!,
+                        children: [
+                          Card(
+                            color: Colors.grey,
+                            elevation: 20,
+                            child: Padding(
+                              padding: EdgeInsets.all(8),
+                              child: Text(
+                                'This is Overlay Portal',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.black,
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     );
                   },
                   child: const Text(
