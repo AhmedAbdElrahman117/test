@@ -16,27 +16,24 @@ class _HomeState extends State<Home> {
     double top = 0;
     return Scaffold(
       body: SafeArea(
-        child: Column(
+        child: Row(
           children: [
             Expanded(
               child: Stack(
                 alignment: Alignment.center,
-                children: list.asMap().entries.map(
-                  (e) {
-                    return Positioned(
+                children: [
+                  for (int i = 0; i < list.length; i++)
+                    Positioned(
                       top: top += 30,
                       child: Draggable<String>(
-                        data: e.value,
+                        data: list[i],
                         axis: Axis.horizontal,
-                        onDragCompleted: () {
-                          print('object');
-                        },
                         feedback: Material(
                           child: Container(
                             width: 200,
                             height: 200,
-                            color: Colors.accents[e.key],
-                            child: Text(e.value),
+                            color: Colors.accents[i],
+                            child: Text(list[i]),
                           ),
                         ),
                         childWhenDragging: Material(
@@ -44,37 +41,41 @@ class _HomeState extends State<Home> {
                             width: 200,
                             height: 200,
                             color: Colors.grey,
-                            child: Text(e.value),
+                            child: Text(list[i]),
                           ),
                         ),
                         child: Container(
                           width: 200,
                           height: 200,
-                          color: Colors.accents[e.key],
-                          child: Text(e.value),
+                          color: Colors.accents[i],
+                          child: Text(list[i]),
                         ),
                       ),
-                    );
-                  },
-                ).toList(),
-              ),
-            ),
-            DragTarget<String>(
-              onAcceptWithDetails: (details) {
-                val = details.data;
-                setState(() {});
-              },
-              onWillAcceptWithDetails: (details) => true,
-              builder: (context, candidateData, rejectedData) {
-                return Container(
-                  width: 200,
-                  height: 200,
-                  color: Colors.green,
-                  child: Center(
-                    child: Text(val),
+                    ),
+                  Positioned(
+                    top: 0,
+                    right: MediaQuery.sizeOf(context).width * 0.9,
+                    child: DragTarget<String>(
+                      onAcceptWithDetails: (details) {
+                        setState(() {
+                          list.remove(details.data);
+                        });
+                      },
+                      onWillAcceptWithDetails: (details) => true,
+                      builder: (context, candidateData, rejectedData) {
+                        return Container(
+                          width: 200,
+                          height: 500,
+                          color: Colors.green,
+                          child: Center(
+                            child: Text(val),
+                          ),
+                        );
+                      },
+                    ),
                   ),
-                );
-              },
+                ],
+              ),
             ),
           ],
         ),
