@@ -10,7 +10,6 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   OverlayPortalController controller = OverlayPortalController();
-  bool animate = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,20 +21,19 @@ class _HomeState extends State<Home> {
               child: TextButton(
                 onPressed: () {
                   controller.toggle();
-                  animate = !animate;
                   setState(() {});
                 },
                 child: OverlayPortal(
                   controller: controller,
                   overlayChildBuilder: (context) {
                     return FadeAnimation(
-                      animationDuration: Duration(milliseconds: 500),
+                      animationDuration: const Duration(milliseconds: 500),
                       begin: 0,
                       end: 1,
                       child: Stack(
                         alignment: Alignment.lerp(
                             Alignment.center, Alignment.bottomCenter, 0.2)!,
-                        children: [
+                        children: const [
                           Card(
                             color: Colors.grey,
                             elevation: 20,
