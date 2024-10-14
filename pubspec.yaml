@@ -39,6 +39,7 @@ dependencies:
   scrollable_positioned_list: ^0.3.8
   auto_animated: ^3.2.0
   skeletonizer: ^1.4.2
+  flutter_contacts: ^1.1.9+2
 
 dev_dependencies:
   flutter_test:
