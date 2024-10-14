@@ -41,26 +41,35 @@ class _HomeState extends State<Home> {
             color: Colors.greenAccent,
           ),
           DraggableScrollableSheet(
-            initialChildSize: 0.13,
-            minChildSize: 0.13,
+            initialChildSize: 0.1,
+            minChildSize: 0.1,
             maxChildSize: 1,
             controller: controller,
             snap: true,
             builder: (context, scrollController) {
-              return ListView(
+              return CustomScrollView(
                 controller: scrollController,
-                children: [
+                slivers: [
                   isExpanded
-                      ? Container(
-                          color: Colors.amber,
-                          width: 500,
-                          height: MediaQuery.sizeOf(context).height,
-                          child: const Text('Expanded'),
+                      ? const SliverFillRemaining(
+                          child: SafeArea(
+                            child: Card(
+                              color: Colors.amber,
+                              margin: EdgeInsets.zero,
+                              shape: RoundedRectangleBorder(),
+                              elevation: 20,
+                              child: Text('Expanded'),
+                            ),
+                          ),
                         )
-                      : Container(
-                          color: Colors.amber,
-                          height: MediaQuery.sizeOf(context).height,
-                          child: const Text('Collapsed'),
+                      : const SliverFillRemaining(
+                          child: Card(
+                            shape: RoundedRectangleBorder(),
+                            margin: EdgeInsets.zero,
+                            elevation: 20,
+                            color: Colors.amber,
+                            child: Text('Collapsed'),
+                          ),
                         )
                 ],
               );
