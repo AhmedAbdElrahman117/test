@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test/delegate.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -15,6 +16,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -22,10 +24,10 @@ class _HomeState extends State<Home> {
             Center(
               child: ElevatedButton(
                 onPressed: () {
-                  // showSearch(
-                  //   context: context,
-                  //   delegate: delegate,
-                  // );
+                  showSearch<String>(
+                    context: context,
+                    delegate: Delegate(list),
+                  );
                 },
                 child: const Text(
                   'Search',
