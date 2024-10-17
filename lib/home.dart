@@ -9,6 +9,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  ScrollController controller1 = ScrollController();
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -20,7 +21,13 @@ class _HomeState extends State<Home> {
             icon: (width, height) {
               return Center(
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    controller1.animateTo(
+                      controller1.position.minScrollExtent,
+                      duration: Duration(milliseconds: 200),
+                      curve: Curves.bounceIn,
+                    );
+                  },
                   icon: const Icon(
                     Icons.arrow_upward,
                     color: Colors.white,
@@ -33,20 +40,26 @@ class _HomeState extends State<Home> {
             iconWidth: 40,
             borderRadius: BorderRadius.circular(50),
             width: MediaQuery.sizeOf(context).width * 0.8,
-            body: (context, controller) => TabBarView(
-              children: [
-                ListView.builder(
-                  itemCount: 100,
-                  controller: controller,
-                  itemBuilder: (context, index) {
-                    return const Text('data');
-                  },
-                ),
-                Container(color: Colors.amberAccent),
-                Container(color: Colors.green),
-                Container(color: Colors.yellowAccent),
-              ],
-            ),
+            body: (context, controller) {
+              controller1 = controller;
+              return TabBarView(
+                children: [
+                  ListView.builder(
+                    itemCount: 100,
+                    controller: controller,
+                    itemBuilder: (context, index) {
+                      return Text(
+                        'data $index',
+                        style: TextStyle(fontSize: 30),
+                      );
+                    },
+                  ),
+                  Container(color: Colors.amberAccent),
+                  Container(color: Colors.green),
+                  Container(color: Colors.yellowAccent),
+                ],
+              );
+            },
             child: Stack(
               clipBehavior: Clip.none,
               alignment: Alignment.center,
