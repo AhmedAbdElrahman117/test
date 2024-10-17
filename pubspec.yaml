@@ -40,6 +40,7 @@ dependencies:
   auto_animated: ^3.2.0
   skeletonizer: ^1.4.2
   flutter_contacts: ^1.1.9+2
+  flutter_floating_bottom_bar: ^1.2.1+1
 
 dev_dependencies:
   flutter_test:
