@@ -8,12 +8,32 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  List<String> list = List.generate(
+    40,
+    (index) => 'Welcome $index',
+  );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Column(
-          children: [],
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  // showSearch(
+                  //   context: context,
+                  //   delegate: delegate,
+                  // );
+                },
+                child: const Text(
+                  'Search',
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
