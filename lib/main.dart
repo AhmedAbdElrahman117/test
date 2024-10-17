@@ -10,8 +10,15 @@ class Test extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.amber,
+          centerTitle: true,
+          elevation: 20,
+        ),
+      ),
       home: Home(),
     );
   }
