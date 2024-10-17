@@ -44,6 +44,7 @@ dependencies:
   qr_flutter: ^4.1.0
   mobile_scanner: ^6.0.1
   fade_out_particle: ^1.2.1
+  clay_containers: ^0.3.4
 
 dev_dependencies:
   flutter_test:
