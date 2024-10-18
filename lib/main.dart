@@ -39,7 +39,7 @@ class Test extends StatelessWidget {
           ],
         ),
         loadingIndicator: const Padding(
-          padding: EdgeInsets.fromLTRB(0, 12, 0, 80),
+          padding: EdgeInsets.fromLTRB(0, 0, 0, 80),
           child: CircularProgressIndicator.adaptive(),
         ),
         bottomLoading: true,
