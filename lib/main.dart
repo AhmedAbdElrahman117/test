@@ -16,7 +16,7 @@ class Test extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: SplashView(
         // backgroundColor: Colors.black,
-        duration: const Duration(seconds: 20),
+        duration: const Duration(seconds: 1),
         logo: Container(color: Colors.amber, width: 200, height: 200),
         title: const Text(
           'UCCD',
