@@ -1,4 +1,3 @@
-import 'package:clay_containers/clay_containers.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -16,14 +15,13 @@ class _HomeState extends State<Home> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Center(
-              child: ClayAnimatedContainer(
-                duration: const Duration(milliseconds: 2000),
-                curve: Curves.linear,
-                color: Colors.grey.shade100,
-                width: 250,
-                height: 250,
-                depth: 40,
+            Badge(
+              label: Text('Hot'),
+              child: IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.notification_important,
+                ),
               ),
             ),
           ],
