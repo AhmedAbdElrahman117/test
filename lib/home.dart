@@ -13,7 +13,17 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body: SafeArea(
         child: Column(
-          children: [],
+          children: [
+            SelectableText(
+              'HiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHi',
+              style: TextStyle(fontSize: 30),
+              showCursor: true,
+              cursorColor: Colors.green,
+              cursorHeight: 30,
+              cursorRadius: Radius.circular(12),
+              cursorWidth: 3,
+            ),
+          ],
         ),
       ),
     );
