@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test/clipper.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -13,7 +14,19 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body: SafeArea(
         child: Column(
-          children: [],
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: ClipPath(
+                clipper: Clipper(),
+                child: Container(
+                  width: 200,
+                  height: 200,
+                  color: Colors.greenAccent,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
